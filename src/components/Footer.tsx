@@ -1,6 +1,6 @@
-
 import React from "react";
 import { Mail, Phone, MapPin } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -58,9 +58,9 @@ const Footer = () => {
               <a href="#use-cases" className="block text-gray-300 hover:text-white transition-colors">
                 Anwendungsszenarien
               </a>
-              <a href="#/contact" className="block text-gray-300 hover:text-white transition-colors">
+              <Link to="/contact" className="block text-gray-300 hover:text-white transition-colors">
                 Jetzt starten
-              </a>
+              </Link>
             </div>
           </div>
         </div>

@@ -1,7 +1,7 @@
-
 import React, { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
 import { Menu, X } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -18,7 +18,6 @@ const Navbar = () => {
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
-    // Prevent background scrolling when menu is open
     document.body.style.overflow = !isMenuOpen ? 'hidden' : '';
   };
 
@@ -28,7 +27,6 @@ const Navbar = () => {
       behavior: 'smooth'
     });
     
-    // Close mobile menu if open
     if (isMenuOpen) {
       setIsMenuOpen(false);
       document.body.style.overflow = '';
@@ -45,8 +43,8 @@ const Navbar = () => {
       )}
     >
       <div className="container flex items-center justify-between px-4 sm:px-6 lg:px-8">
-        <a 
-          href="#" 
+        <Link 
+          to="/" 
           className="flex items-center space-x-2"
           onClick={(e) => {
             e.preventDefault();
@@ -55,39 +53,33 @@ const Navbar = () => {
           aria-label="INAW"
         >
           <div className="flex items-center space-x-4">
-            {/* Window-style logo with "i" */}
             <div className="w-10 h-10 sm:w-12 sm:h-12 bg-pulse-500 rounded-lg flex items-center justify-center relative overflow-hidden shadow-md">
-              {/* Window panes */}
               <div className="absolute inset-0 grid grid-cols-2 grid-rows-2 gap-[2px] p-[4px]">
                 <div className="bg-white/25 rounded-sm"></div>
                 <div className="bg-white/25 rounded-sm"></div>
                 <div className="bg-white/25 rounded-sm"></div>
                 <div className="bg-white/25 rounded-sm"></div>
               </div>
-              {/* Stylized "i" */}
               <span className="text-white font-bold text-xl sm:text-2xl z-10 italic drop-shadow-sm">i</span>
             </div>
             <span className="text-4xl sm:text-5xl font-display font-bold text-gray-900 tracking-wider">INAW</span>
           </div>
-        </a>
+        </Link>
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex space-x-8">
-          <a 
-            href="#" 
+          <Link 
+            to="/" 
             className="nav-link"
-            onClick={(e) => {
-              e.preventDefault();
-              scrollToTop();
-            }}
+            onClick={scrollToTop}
           >
             Start
-          </a>
+          </Link>
           <a href="#features" className="nav-link">Über uns</a>
-          <a href="#/contact" className="nav-link">Kontakt</a>
+          <Link to="/contact" className="nav-link">Kontakt</Link>
         </nav>
 
-        {/* Mobile menu button - increased touch target */}
+        {/* Mobile menu button */}
         <button 
           className="md:hidden text-gray-700 p-3 focus:outline-none" 
           onClick={toggleMenu}
@@ -97,24 +89,23 @@ const Navbar = () => {
         </button>
       </div>
 
-      {/* Mobile Navigation - improved for better touch experience */}
+      {/* Mobile Navigation */}
       <div className={cn(
         "fixed inset-0 z-40 bg-white flex flex-col pt-16 px-6 md:hidden transition-all duration-300 ease-in-out",
         isMenuOpen ? "opacity-100 translate-x-0" : "opacity-0 translate-x-full pointer-events-none"
       )}>
         <nav className="flex flex-col space-y-8 items-center mt-8">
-          <a 
-            href="#" 
+          <Link 
+            to="/" 
             className="text-xl font-medium py-3 px-6 w-full text-center rounded-lg hover:bg-gray-100" 
-            onClick={(e) => {
-              e.preventDefault();
+            onClick={() => {
               scrollToTop();
               setIsMenuOpen(false);
               document.body.style.overflow = '';
             }}
           >
             Start
-          </a>
+          </Link>
           <a 
             href="#features" 
             className="text-xl font-medium py-3 px-6 w-full text-center rounded-lg hover:bg-gray-100" 
@@ -125,8 +116,8 @@ const Navbar = () => {
           >
             Über uns
           </a>
-          <a 
-            href="#/contact" 
+          <Link 
+            to="/contact" 
             className="text-xl font-medium py-3 px-6 w-full text-center rounded-lg hover:bg-gray-100" 
             onClick={() => {
               setIsMenuOpen(false);
@@ -134,7 +125,7 @@ const Navbar = () => {
             }}
           >
             Kontakt
-          </a>
+          </Link>
         </nav>
       </div>
     </header>
