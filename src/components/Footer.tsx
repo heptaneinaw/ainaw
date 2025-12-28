@@ -1,8 +1,12 @@
 import React from "react";
 import { Mail, Phone, MapPin } from "lucide-react";
-import { Link } from "react-router-dom";
 
 const Footer = () => {
+  const handleContactClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    window.location.hash = '/contact';
+  };
+
   return (
     <footer className="w-full bg-gray-900 text-white py-12">
       <div className="section-container">
@@ -58,9 +62,13 @@ const Footer = () => {
               <a href="#use-cases" className="block text-gray-300 hover:text-white transition-colors">
                 Anwendungsszenarien
               </a>
-              <Link to="/contact" className="block text-gray-300 hover:text-white transition-colors">
+              <a
+                href="#/contact"
+                onClick={handleContactClick}
+                className="block text-gray-300 hover:text-white transition-colors"
+              >
                 Jetzt starten
-              </Link>
+              </a>
             </div>
           </div>
         </div>
@@ -74,4 +82,5 @@ const Footer = () => {
     </footer>
   );
 };
+
 export default Footer;

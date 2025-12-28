@@ -1,11 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 import { ArrowRight } from "lucide-react";
-import { Link } from "react-router-dom";
 import heroDoohDisplay from "@/assets/hero-dooh-display.jpg";
-
-// Optional: if you later add a JSON Lottie file, import it statically
-// import loopHeaderData from "@/assets/loop-header.json";
 
 const Hero = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -20,15 +16,6 @@ const Hero = () => {
     window.addEventListener('resize', checkMobile);
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
-
-  // Remove Lottie fetch — .lottie is binary, not JSON
-  // const [lottieData, setLottieData] = useState<any>(null);
-  // useEffect(() => {
-  //   fetch('loop-header.lottie')
-  //     .then(response => response.json())
-  //     .then(data => setLottieData(data))
-  //     .catch(error => console.error("Error loading Lottie animation:", error));
-  // }, []);
 
   useEffect(() => {
     if (isMobile) return;
@@ -72,6 +59,11 @@ const Hero = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [isMobile]);
 
+  const handleContactClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    window.location.hash = '/contact';
+  };
+
   return (
     <section
       className="overflow-hidden relative bg-cover"
@@ -112,8 +104,9 @@ const Hero = () => {
               className="flex flex-col sm:flex-row gap-4 opacity-0 animate-fade-in"
               style={{ animationDelay: "0.7s" }}
             >
-              <Link
-                to="/contact"
+              <a
+                href="#/contact"
+                onClick={handleContactClick}
                 className="flex items-center justify-center group w-full sm:w-auto text-center"
                 style={{
                   backgroundColor: '#FE5C02',
@@ -129,12 +122,11 @@ const Hero = () => {
               >
                 Jetzt starten
                 <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
-              </Link>
+              </a>
             </div>
           </div>
 
           <div className="w-full lg:w-1/2 relative mt-6 lg:mt-0">
-            {/* Fallback to static image — no Lottie */}
             <div className="absolute inset-0 bg-dark-900 rounded-2xl sm:rounded-3xl -z-10 shadow-xl"></div>
             <div className="relative transition-all duration-500 ease-out overflow-hidden rounded-2xl sm:rounded-3xl shadow-2xl">
               <img

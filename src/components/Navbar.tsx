@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
 import { Menu, X } from "lucide-react";
-import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -33,6 +32,21 @@ const Navbar = () => {
     }
   };
 
+  const handleContactClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    window.location.hash = '/contact';
+    if (isMenuOpen) {
+      setIsMenuOpen(false);
+      document.body.style.overflow = '';
+    }
+  };
+
+  const handleHomeClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    window.location.hash = '/';
+    scrollToTop();
+  };
+
   return (
     <header
       className={cn(
@@ -43,13 +57,10 @@ const Navbar = () => {
       )}
     >
       <div className="container flex items-center justify-between px-4 sm:px-6 lg:px-8">
-        <Link 
-          to="/" 
+        <a 
+          href="#/"
           className="flex items-center space-x-2"
-          onClick={(e) => {
-            e.preventDefault();
-            scrollToTop();
-          }}
+          onClick={handleHomeClick}
           aria-label="INAW"
         >
           <div className="flex items-center space-x-4">
@@ -64,19 +75,25 @@ const Navbar = () => {
             </div>
             <span className="text-4xl sm:text-5xl font-display font-bold text-gray-900 tracking-wider">INAW</span>
           </div>
-        </Link>
+        </a>
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex space-x-8">
-          <Link 
-            to="/" 
+          <a 
+            href="#/"
             className="nav-link"
-            onClick={scrollToTop}
+            onClick={handleHomeClick}
           >
             Start
-          </Link>
+          </a>
           <a href="#features" className="nav-link">Über uns</a>
-          <Link to="/contact" className="nav-link">Kontakt</Link>
+          <a 
+            href="#/contact"
+            className="nav-link"
+            onClick={handleContactClick}
+          >
+            Kontakt
+          </a>
         </nav>
 
         {/* Mobile menu button */}
@@ -95,20 +112,16 @@ const Navbar = () => {
         isMenuOpen ? "opacity-100 translate-x-0" : "opacity-0 translate-x-full pointer-events-none"
       )}>
         <nav className="flex flex-col space-y-8 items-center mt-8">
-          <Link 
-            to="/" 
-            className="text-xl font-medium py-3 px-6 w-full text-center rounded-lg hover:bg-gray-100" 
-            onClick={() => {
-              scrollToTop();
-              setIsMenuOpen(false);
-              document.body.style.overflow = '';
-            }}
+          <a 
+            href="#/"
+            className="text-xl font-medium py-3 px-6 w-full text-center rounded-lg hover:bg-gray-100"
+            onClick={handleHomeClick}
           >
             Start
-          </Link>
+          </a>
           <a 
-            href="#features" 
-            className="text-xl font-medium py-3 px-6 w-full text-center rounded-lg hover:bg-gray-100" 
+            href="#features"
+            className="text-xl font-medium py-3 px-6 w-full text-center rounded-lg hover:bg-gray-100"
             onClick={() => {
               setIsMenuOpen(false);
               document.body.style.overflow = '';
@@ -116,16 +129,13 @@ const Navbar = () => {
           >
             Über uns
           </a>
-          <Link 
-            to="/contact" 
-            className="text-xl font-medium py-3 px-6 w-full text-center rounded-lg hover:bg-gray-100" 
-            onClick={() => {
-              setIsMenuOpen(false);
-              document.body.style.overflow = '';
-            }}
+          <a 
+            href="#/contact"
+            className="text-xl font-medium py-3 px-6 w-full text-center rounded-lg hover:bg-gray-100"
+            onClick={handleContactClick}
           >
             Kontakt
-          </Link>
+          </a>
         </nav>
       </div>
     </header>
