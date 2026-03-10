@@ -1,5 +1,4 @@
-This repository is copied from the Template-Repository in this Project-heptaneinaw. The Template-Repository is in sync with lovable.dev.
-But this repository-ainaw is independent of the Template-Repository and no changes here will affect the template synced with lovable.
+This is the website repository for the AI-based DOOH-advertising product "Intelligente Nutzung und Automatisierung von Werbefläche".
 
 **Use your preferred IDE**
 
@@ -49,7 +48,7 @@ This project is built with .
 
 ## How can I deploy this project?
 
-Simply open [Lovable](https://lovable.dev/projects/35d72d2e-6e25-40e5-9b0c-c0d1a7c1b727) and click on Share -> Publish.
+Deployment only possible through the main repository.
 
 ## I want to use a custom domain - is that possible?
 
