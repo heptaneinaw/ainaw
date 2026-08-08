@@ -192,10 +192,10 @@ const Contact = () => {
                       <p className="font-medium">Telefon</p>
 
                       <a
-                        href="tel:+49123456789"
+                        href="tel:+4917660816445"
                         className="text-gray-600 hover:text-pulse-500"
                       >
-                        +49 123 456 789
+                        +49 176 60816445
                       </a>
                     </div>
                   </div>
