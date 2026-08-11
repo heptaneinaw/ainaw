@@ -38,11 +38,9 @@ const UseCaseCard = ({
   return <div className="bg-cover bg-center rounded-lg p-8 h-full flex flex-col justify-between text-white transform transition-transform duration-300 hover:-translate-y-2 relative overflow-hidden" style={{
     backgroundImage: `url('${import.meta.env.BASE_URL}${backgroundImage}')`
   }}>
-      <div className="absolute top-0 right-0 w-24 h-24 bg-white z-10"></div>
-      
       <div className="relative z-0">
         <h3 className="font-semibold text-2xl mb-6">{title}</h3>
-        <p className="text-lg font-medium leading-relaxed pr-20">{content}</p>
+        <p className="text-lg font-medium leading-relaxed">{content}</p>
       </div>
     </div>;
 };
