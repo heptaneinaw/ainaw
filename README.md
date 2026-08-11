@@ -1,4 +1,4 @@
-This is the website repository for the AI-based DOOH-advertising product "Intelligente Nutzung und Automatisierung von Werbefläche".
+This is the website repository for the AI-based DOOH-advertising product "Intelligente Nutzung und Automatisierung von Werbefläche (iNAW)".
 
 **Use your preferred IDE**
 
